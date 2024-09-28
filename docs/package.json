@@ -11,7 +11,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "vitepress": "1.0.0-rc.44"
-  }
+  "devDependencies": {}
 }
