@@ -16,6 +16,8 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
       - name: Install pnpm
         run: npm install -g pnpm
@@ -42,6 +44,8 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
       - name: Install pnpm
         run: npm install -g pnpm
