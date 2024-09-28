@@ -27,6 +27,7 @@ module.exports = {
         ignorePseudoClasses: ['global', 'export', 'v-deep', 'deep']
       }
     ],
+    'scss/no-global-function-names': null,
     'no-empty-source': null,
     'selector-class-pattern': null,
     // 'selector-no-vendor-prefix': null,

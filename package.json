@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "cd ./play && pnpm dev",
+    "docs:dev": "cd ./docs && pnpm dev",
+    "docs:build": "cd ./docs && pnpm build",
+    "docs:test": "echo 'todo'",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write --cache .",
     "lint:stylelint": "stylelint  \"**/*.{css,scss,vue,html}\" --fix",

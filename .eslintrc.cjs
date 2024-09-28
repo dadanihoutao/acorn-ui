@@ -32,6 +32,7 @@ module.exports = {
     }
   },
   rules: {
+    'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': 'off',
     // 对后缀的检测
     'import/extensions': [
