@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "cd ./play && pnpm dev",
+    "test": "echo 'todo'",
     "docs:dev": "cd ./docs && pnpm dev",
     "docs:build": "cd ./docs && pnpm build",
     "docs:test": "echo 'todo'",
