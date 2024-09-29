@@ -36,6 +36,8 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'no-underscore-dangle': 'off',
     'no-void': 'off',
+    'consistent-return': 'off',
+    'no-restricted-syntax': 'off',
     // 对后缀的检测
     'import/extensions': [
       'error',

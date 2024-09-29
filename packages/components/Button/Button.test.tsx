@@ -1,10 +1,13 @@
-import { describe, test, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
-import type { ButtonType, ButtonSize } from './types'
+import { describe, test, it, expect, vi } from 'vitest'
 
-import Icon from '../Icon/Icon.vue'
+
 import Button from './Button.vue'
 import ButtonGroup from './ButtonGroup.vue'
+
+import Icon from '../Icon/Icon.vue'
+
+import type { ButtonType, ButtonSize } from './types'
 
 describe('Button.vue', () => {
   const onClick = vi.fn()
