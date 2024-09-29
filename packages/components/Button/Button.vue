@@ -7,18 +7,36 @@ defineOptions({
   name: 'AButton'
 })
 
-const props = withDefaults(defineProps<ButtonProps>(), {
-  tag: 'button'
+withDefaults(defineProps<ButtonProps>(), {
+  tag: 'button',
+  nativeType: 'button'
 })
 
 const slot = defineSlots()
+console.log(slot)
 
 const _ref = ref<HTMLButtonElement>()
 </script>
 <template>
-  <button style="color: red; background-color: blue">this is a button</button>
-  {{ props }}
-  {{ _ref }}
-  {{ slot }}
+  <component
+    :is="tag"
+    :ref="_ref"
+    class="a-button"
+    :type="tag === 'button' ? nativeType : void 0"
+    :disabled="disabled || loading ? true : void 0"
+    :class="{
+      [`a-button--${type}`]: type,
+      [`a-button--${size}`]: size,
+      'is-plain': plain,
+      'is-round': round,
+      'is-circle': circle,
+      'is-disabled': disabled,
+      'is-loading': loading
+    }"
+  >
+    <slot></slot>
+  </component>
 </template>
-<style scoped lang="css"></style>
+<style scoped>
+@import url('./style.css');
+</style>
