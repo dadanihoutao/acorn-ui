@@ -1,5 +1,5 @@
-import { AButton } from '@acorn-ui/components'
+import { AButton, AButtonGroup, AIcon } from '@acorn-ui/components'
 
 import type { Plugin } from 'vue'
 
-export default [AButton] as Plugin[]
+export default [AButton, AButtonGroup, AIcon] as Plugin[]
