@@ -38,6 +38,7 @@ module.exports = {
     'no-void': 'off',
     'consistent-return': 'off',
     'no-restricted-syntax': 'off',
+    'no-return-assign': 'off',
     // 对后缀的检测
     'import/extensions': [
       'error',
