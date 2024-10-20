@@ -39,6 +39,7 @@ module.exports = {
     'consistent-return': 'off',
     'no-restricted-syntax': 'off',
     'no-return-assign': 'off',
+    'no-unused-expressions': 'off',
     // 对后缀的检测
     'import/extensions': [
       'error',

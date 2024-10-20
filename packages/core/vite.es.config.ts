@@ -1,9 +1,18 @@
+import terser from '@rollup/plugin-terser'
 import vue from '@vitejs/plugin-vue'
-import { readdirSync } from 'fs'
-import { filter, map } from 'lodash-es'
+import { readdirSync, readFileSync } from 'fs'
+import { filter, map, delay } from 'lodash-es'
 import { resolve } from 'path'
+import shell from 'shelljs'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
+
+import hooks from './hooksPlugin'
+
+const isProd = process.env.NODE_ENV === 'production'
+const isDev = process.env.NODE_ENV === 'development'
+const isTest = process.env.NODE_ENV === 'test'
+const TRY_MOVE_STYLE_DELAY = 800 as number
 
 function getDirectoriesSync(basePath: string) {
   const entries = readdirSync(basePath, { withFileTypes: true })
@@ -13,6 +22,14 @@ function getDirectoriesSync(basePath: string) {
     (entry) => entry.name
   )
 }
+function moveStyle() {
+  try {
+    readFileSync('./dist/es/theme')
+    shell.cp('./dist/es/theme', './dist')
+  } catch (_) {
+    delay(moveStyle, TRY_MOVE_STYLE_DELAY)
+  }
+}
 
 export default defineConfig({
   plugins: [
@@ -20,10 +37,28 @@ export default defineConfig({
     dts({
       tsconfigPath: '../../tsconfig.build.json',
       outDir: 'dist/types'
+    }),
+    hooks({
+      rmFile: ['./dist/es', './dist/theme', './dist/types'],
+      afterBuild: moveStyle
+    }),
+    terser({
+      compress: {
+        drop_console: ['log'],
+        drop_debugger: true,
+        passes: 3,
+        global_defs: {
+          '@DEV': JSON.stringify(isDev),
+          '@PROD': JSON.stringify(isProd),
+          '@TEST': JSON.stringify(isTest)
+        }
+      }
     })
   ],
   build: {
     outDir: 'dist/es',
+    minify: false,
+    cssCodeSplit: true,
     lib: {
       entry: resolve(__dirname, './index.ts'),
       name: 'AcornUI',
@@ -42,6 +77,9 @@ export default defineConfig({
       output: {
         assetFileNames: (assetInfo) => {
           if (assetInfo.name === 'style.css') return 'index.css'
+          if (assetInfo.type === 'asset' && /\.(css)$/i.test(assetInfo.name as string)) {
+            return 'theme/[name].[ext]'
+          }
           return assetInfo.name as string
         },
         manualChunks(id) {

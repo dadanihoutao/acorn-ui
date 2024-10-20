@@ -4,6 +4,9 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 
 import components from './components'
 import '@acorn-ui/theme/index.css'
+import printLogo from './printLogo'
+
+printLogo()
 
 library.add(fas)
 

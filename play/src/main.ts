@@ -1,7 +1,6 @@
-import acornUi from 'acorn-ui'
+import acornUI from 'acorn-ui'
 import { createApp } from 'vue'
-
 import App from './App.vue'
 import 'acorn-ui/dist/index.css'
 
-createApp(App).use(acornUi).mount('#app')
+createApp(App).use(acornUI).mount('#app')

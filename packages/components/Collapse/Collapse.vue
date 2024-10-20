@@ -3,9 +3,8 @@ import { debugWarn } from '@acorn-ui/utils'
 import { ref, provide, watch } from 'vue'
 
 import { COLLAPSE_CTX_KEY } from './constants'
-import { CollapseItemName } from './types'
 
-import type { CollapseProps, CollapseEmits } from './types'
+import type { CollapseItemName, CollapseProps, CollapseEmits } from './types'
 
 const COMPONENT_NAME = 'ACollapse' as const
 defineOptions({
