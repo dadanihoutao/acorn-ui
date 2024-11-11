@@ -53,7 +53,14 @@ export default defineConfig({
           '@TEST': JSON.stringify(isTest)
         }
       }
-    })
+    }),
+    {
+      name: 'exit-after-build',
+      closeBundle() {
+        // 在打包完成后退出进程
+        process.exit(0)
+      }
+    }
   ],
   build: {
     outDir: 'dist/es',
